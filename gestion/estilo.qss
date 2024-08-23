@@ -1,0 +1,113 @@
+QWidget {
+    background-color: #f0f0f0;
+}
+
+QLabel {
+    font-size: 16px;
+    color: #333;
+}
+
+QLineEdit {
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+QPushButton {
+    font-size: 16px;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+QPushButton#self.login_button {
+    background-color: #054bff;
+    color: white;
+}
+
+QPushButton#self.login_button:hover {
+    background-color: #0056b3;
+}
+
+QPushButton#menu_button {
+    background-color: #007bff;
+    color: white;
+}
+
+QPushButton#menu_button:hover {
+    background-color: #0056b3;
+}
+
+QPushButton#logout_button {
+    background-color: #dc3545;
+    color: white;
+}
+
+QPushButton#logout_button:hover {
+    background-color: #c82333;
+}
+
+QPushButton#close_button {
+    background-color: #6c757d;
+    color: white;
+}
+
+QPushButton#close_button:hover {
+    background-color: #5a4768;
+}
+
+QPushButton#add_button {
+    background-color: #28a745;
+    color: white;
+}
+
+QPushButton#add_button:hover {
+    background-color: #218838;
+}
+
+QPushButton#agregarProducto {
+    background-color: #28a745;
+    color: white;
+}
+
+QPushButton#agregarProducto:hover {
+    background-color: #218838;
+}
+
+QPushButton#edit_button {
+    background-color: #ffc107;
+    color: black;
+}
+
+QPushButton#edit_button:hover {
+    background-color: #e0a800;
+}
+
+QPushButton#finalizarVenta {
+    background-color: #ffc107;
+    color: black;
+}
+
+QPushButton#finalizarVenta:hover {
+    background-color: #e0a800;
+}
+
+QPushButton#delete_button {
+    background-color: #dc3545;
+    color: white;
+}
+
+QPushButton#delete_button:hover {
+    background-color: #c82333;
+}
+
+QTableWidget {
+    border: 1px solid #ccc;
+    font-size: 14px;
+    gridline-color: #ddd;
+}
+
+QTableWidget::item {
+    padding: 10px;
+}

@@ -1,0 +1,69 @@
+
+
+class AddProductWindow(QWidget):
+    def __init__(self, parent=None, db_connection=None):
+        super().__init__(parent)
+        self.db_connection = db_connection
+        self.init_ui()
+
+    def init_ui(self):
+        self.setWindowTitle('Agregar Producto')
+        self.setGeometry(150, 150, 300, 250)
+
+        layout = QVBoxLayout()
+
+        self.name_label = QLabel('Nombre:')
+        self.name_entry = QLineEdit()
+        layout.addWidget(self.name_label)
+        layout.addWidget(self.name_entry)
+
+        self.price_label = QLabel('Precio Venta:')
+        self.price_entry = QLineEdit()
+        layout.addWidget(self.price_label)
+        layout.addWidget(self.price_entry)
+
+        self.stock_label = QLabel('Stock:')
+        self.stock_entry = QLineEdit()
+        layout.addWidget(self.stock_label)
+        layout.addWidget(self.stock_entry)
+
+        self.unit_label = QLabel('Unidad:')
+        self.unit_entry = QLineEdit()
+        layout.addWidget(self.unit_label)
+        layout.addWidget(self.unit_entry)
+
+        self.type_label = QLabel('Tipo:')
+        self.type_entry = QLineEdit()
+        layout.addWidget(self.type_label)
+        layout.addWidget(self.type_entry)
+
+        self.save_button = QPushButton('Guardar')
+        self.save_button.clicked.connect(self.save_product)
+        layout.addWidget(self.save_button)
+
+        self.setLayout(layout)
+
+    def save_product(self):
+        name = self.name_entry.text()
+        price = self.price_entry.text()
+        stock = self.stock_entry.text()
+        unit = self.unit_entry.text()
+        type_ = self.type_entry.text()
+
+        if not all([name, price, stock, unit, type_]):
+            QMessageBox.warning(self, 'Error', 'Por favor, complete todos los campos.')
+            return
+
+        try:
+            cursor = self.db_connection.cursor()
+            query = """
+            INSERT INTO Producto (Nombre, Precio_Venta, Stock, Unidad, Tipo)
+            VALUES (%s, %s, %s, %s, %s)
+            """
+            cursor.execute(query, (name, price, stock, unit, type_))
+            self.db_connection.commit()
+            cursor.close()
+            QMessageBox.information(self, 'Éxito', 'Producto agregado exitosamente.')
+            self.close()
+        except Exception as e:
+            QMessageBox.critical(self, 'Error', f'Error al agregar el producto: {e}')
